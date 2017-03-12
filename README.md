@@ -1,51 +1,29 @@
-line-bot-sample
+line-bot-sdk-tiny
 ==
 
-A full-stack LINE Messaging API sample implementation. This sample shows you a practical use of the LINE Messaging API.
+A very simple SDK (subset) for the LINE Messaging API for PHP.
 
-This project uses the [Slim framework](http://www.slimframework.com/).
-
-Getting started
+Description (and motivation)
 --
 
-```
-$ curl -sS https://getcomposer.org/installer | php # Install composer.phar
-$ ./composer.phar install
-$ $EDITOR ./src/LINEBot/KitchenSink/Setting.php # <= edit your bot information
-$ ./run.sh 8080
-```
+[line-bot-sdk-php](https://github.com/line/line-bot-sdk-php) is a full-stack implementation of the LINE Messaging API SDK, which uses an OOP interface and functions. It provides an API client, a message builder, an HTTP client, an event parser and other useful components.
 
-Hints
+On the other hand, line-bot-sdk-tiny provides a simple interface and functions. It contains a part of the API functions (not full function).
+
+This SDK contains only one file, so it is easy to add `LINEBotTiny.php` to your environment and require that from your script.
+And of course, you can also copy and paste this SDK.
+
+Example
 --
 
-### [public/index.php](./public/index.php)
+See [echo_bot](./echo_bot.php).
 
-Entry point of this application.
+When running this example, make sure that you have set your Channel access token and Channel secret.
 
-### [src/LINEBot/KitchenSink/Route.php](./src/LINEBot/KitchenSink/Route.php)
-
-Core logic of this application using the LINE Messaging API.
-
-### [Event handlers](./src/LINEBot/KitchenSink/EventHandler)
-
-Handlers for LINE Messaging API events.
-
-Notes
+Requirements
 --
 
-### Temporary directory
-
-This application downloads multimedia files to `./public/static/tmpdir/`.
-The `./run.sh` wrapper removes this content on shut down of the PHP server.
-
-### Base URL
-
-This application serves downloaded multimedia files.
-
-By default, this app constructs URLs for the content with `\Slim\Http\Request->getUri()->getBaseUrl()` as the base URL.
-Unfortunately this process doesn't work correctly if this app runs on a reverse-proxied environment.
-
-If you encounter this problem, configure the base URL to whatever you like using [UrlBuilder](./src/LINEBot/KitchenSink/EventHandler/MessageHandler/Util/UrlBuilder.php)
+PHP 5.4 or later
 
 License
 --
